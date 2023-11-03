@@ -1,5 +1,5 @@
 import unittest
-from statistics_service import StatisticsService
+from statistics_service import StatisticsService, SortBy
 from player import Player
 
 class TestPlayerList:
@@ -40,8 +40,17 @@ class TestStatisticsService(unittest.TestCase):
         team_name = "VAN"
         self.assertEqual([], self.stats.team(team_name))
 
-    def test_get_top_players(self):
-        # Palautettu määrä on yhden enemmän kuin odotettu?
-        player_list = self.stats.top(1)
+    def test_get_top_players_by_points(self):
+        player_list = self.stats.top(2, SortBy.POINTS)
         target_player_list = [TestPlayerList().playerlist[4], TestPlayerList().playerlist[1]]
+        self.assertEqual(target_player_list, player_list)
+    
+    def test_get_top_players_by_assists(self):
+        player_list = self.stats.top(2, SortBy.ASSISTS)
+        target_player_list = [TestPlayerList().playerlist[4], TestPlayerList().playerlist[3]]
+        self.assertEqual(target_player_list, player_list)
+
+    def test_get_top_players_by_goals(self):
+        player_list = self.stats.top(2, SortBy.GOALS)
+        target_player_list = [TestPlayerList().playerlist[1], TestPlayerList().playerlist[3]]
         self.assertEqual(target_player_list, player_list)
