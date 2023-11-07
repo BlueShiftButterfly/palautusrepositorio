@@ -1,4 +1,4 @@
 # palautusrepositorio
-Ohjelmistotuotannon kurssin palautusrepositorio. Tehtävät 14 ja eteenpäin.
+Ohjelmistotuotannon kurssin palautusrepositorio. 
 
 Ohtuvarasto: https://github.com/BlueShiftButterfly/ohtuvarasto
